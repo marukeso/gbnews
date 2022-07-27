@@ -17,4 +17,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "gbnews-backend"
           heroku_email: "marukeso@gmail.com"
-          appdir: "apps/api"
+          appdir: "backend"
