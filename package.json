@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "frontend",
+      "backend"
+    ],
+    "nohoist": [
+      "**/backend",
+      "**/backend/**",
+      "**/frontend",
+      "**/frontend/**"
+    ]
+  },
+  "scripts": {
+    "backend": "yarn workspace backend",
+    "frontend": "yarn workspace frontend"
+  }
+}
