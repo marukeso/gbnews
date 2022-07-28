@@ -4,12 +4,6 @@
     "packages": [
       "frontend",
       "backend"
-    ],
-    "nohoist": [
-      "**/backend",
-      "**/backend/**",
-      "**/frontend",
-      "**/frontend/**"
     ]
   },
   "scripts": {
