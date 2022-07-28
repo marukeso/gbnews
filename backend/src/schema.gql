@@ -133,6 +133,7 @@ input ItemOrderByWithRelationInput {
 
 input ItemWhereUniqueInput {
   id: String
+  name: String
 }
 
 enum ItemScalarFieldEnum {
