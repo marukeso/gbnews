@@ -5,15 +5,16 @@ import { HideField } from '@nestjs/graphql';
 
 @ObjectType()
 export class Item {
-  @Field(() => ID, { nullable: false })
-  id!: string;
 
-  @Field(() => String, { nullable: false })
-  name!: string;
+    @Field(() => ID, {nullable:false})
+    id!: string;
 
-  @HideField()
-  createdAt!: Date;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
-  @HideField()
-  updatedAt!: Date;
+    @HideField()
+    createdAt!: Date;
+
+    @HideField()
+    updatedAt!: Date;
 }

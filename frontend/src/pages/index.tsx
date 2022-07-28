@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Suspense } from 'react'
 import { useQuery } from 'urql'
 
 const itemsQuery = `
@@ -17,7 +16,10 @@ const Home: NextPage = () => {
     query: itemsQuery,
   })
 
-  const { data } = result
+  const { data, fetching, error } = result
+
+  if (fetching) return <p>Loading...</p>
+  if (error) return <p>Oh no... {error.message}</p>
 
   return (
     <div>
@@ -29,13 +31,11 @@ const Home: NextPage = () => {
 
       <h1>GB News front</h1>
 
-      <Suspense fallback={<p>hogehgoeg</p>}>
-        <ul>
-          {data.items.map((item: any) => (
-            <li key={item.id}>{item.name}</li>
-          ))}
-        </ul>
-      </Suspense>
+      <ul>
+        {data.items.map((item: any) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   )
 }
