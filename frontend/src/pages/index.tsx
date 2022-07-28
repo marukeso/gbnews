@@ -17,9 +17,7 @@ const Home: NextPage = () => {
     query: itemsQuery,
   })
 
-  const {
-    data: { items },
-  } = result
+  const { data } = result
 
   return (
     <div>
@@ -33,7 +31,7 @@ const Home: NextPage = () => {
 
       <Suspense fallback={<p>hogehgoeg</p>}>
         <ul>
-          {items.map((item: any) => (
+          {data.items.map((item: any) => (
             <li key={item.id}>{item.name}</li>
           ))}
         </ul>
