@@ -15,8 +15,15 @@ type LoginResponse {
   user: User!
 }
 
+type Item {
+  id: ID!
+  name: String!
+}
+
 type Query {
   user(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User!
+  item(where: ItemWhereInput, orderBy: [ItemOrderByWithRelationInput!], cursor: ItemWhereUniqueInput, take: Int, skip: Int, distinct: [ItemScalarFieldEnum!]): Item!
+  items: [Item!]!
 }
 
 input UserWhereInput {
@@ -111,9 +118,34 @@ enum UserScalarFieldEnum {
   updatedAt
 }
 
+input ItemWhereInput {
+  AND: [ItemWhereInput!]
+  OR: [ItemWhereInput!]
+  NOT: [ItemWhereInput!]
+  id: StringFilter
+  name: StringFilter
+}
+
+input ItemOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input ItemWhereUniqueInput {
+  id: String
+}
+
+enum ItemScalarFieldEnum {
+  id
+  name
+  createdAt
+  updatedAt
+}
+
 type Mutation {
   createUser(data: UserCreateInput!): User!
   login(loginUserInput: LoginUserInput!): LoginResponse!
+  createItem(data: ItemCreateInput!): Item!
 }
 
 input UserCreateInput {
@@ -125,4 +157,9 @@ input UserCreateInput {
 input LoginUserInput {
   email: String!
   password: String!
+}
+
+input ItemCreateInput {
+  id: String
+  name: String!
 }

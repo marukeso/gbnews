@@ -43,3 +43,14 @@ model User {
   /// @HideField({ input: true, output: true })
   updatedAt DateTime @updatedAt
 }
+
+model Item {
+  /// @Field(() => ID)
+  id        String   @id @default(uuid())
+  /// @Validator.IsNotEmpty()
+  name      String   @unique
+  /// @HideField({ input: true, output: true })
+  createdAt DateTime @default(now())
+  /// @HideField({ input: true, output: true })
+  updatedAt DateTime @updatedAt
+}
